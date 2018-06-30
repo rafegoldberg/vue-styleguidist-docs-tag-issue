@@ -22,7 +22,7 @@ An example repo re: [**vue-styleguidist** issue #154](https://github.com/vue-sty
 
 1. First `git clone` the repo; run `yarn` to install dependencies.
 2. Run `yarn dox` to start Styleguidist. Open the link to the local styleguide in your browser to verify everything's working. (Our component's `<docs/>` tag should "just work"!)
-3. But now try running `yarn dev` to start the Vue dev server... **_This is where I get an error about our pretty 'lil inline `<docs/>` tag. 😭_** (It'll tell you that you're missing the "appropriate loaders" to render the tag properly.)
+3. But now try running `yarn dev` to start the Vue dev server... **_You should get an error about our 'lil inline `<docs/>` tag._** 😭(It'll tell you that you're missing the "appropriate loaders" to render the tag properly.)
 4. To fix this, comment out the entire `<docs/>` tag in the components `.vue` file. (Use single-line comments; block-comments will break the Webpack build:)
 
     ```js
