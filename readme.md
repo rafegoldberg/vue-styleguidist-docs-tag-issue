@@ -2,7 +2,7 @@
 
 An example repo re: [**vue-styleguidist** issue #154](https://github.com/vue-styleguidist/vue-styleguidist/issues/154):
 
-> I've noticed a problem when using Vue Styleguidist's [inline `<docs/>` tag](https://github.com/vue-styleguidist/vue-styleguidist/blob/master/docs/Documenting.md#external-examples-using-doclet-tags) to add usage examples to my docs. When I run Styleguidist (`v1.7.12`) e'erything works as expected. But if I then try to run the Vue build (with `vue@2.5.16` and `@vue/cli-service@3.0.0-rc.3`) I get the following error:
+> I've noticed a problem when using Vue Styleguidist's [inline `<docs/>` tag](https://github.com/vue-styleguidist/vue-styleguidist/blob/master/docs/Documenting.md#external-examples-using-doclet-tags) to add usage examples to my components. When I run Styleguidist (`v1.7.12`) e'erything works as expected. But if I then try to run the Vue build (with `vue@2.5.16` and `@vue/cli-service@3.0.0-rc.3`) I get the following error:
 > 
 > ```
 > ERROR  Failed to compile with 1 errors
