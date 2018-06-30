@@ -1,21 +1,8 @@
-## Vue Styleguidist Docs Tag Issue
+### Vue Styleguidist `<docs/>` Issue
 
-An example repo re: [**@vue-styleguidist**#154](https://github.com/vue-styleguidist/vue-styleguidist/issues/154).
+An example repo re: [**vue-styleguidist** issue #154](https://github.com/vue-styleguidist/vue-styleguidist/issues/154):
 
-> I'm having issues using the `<docs/>` tag. I tried adding some additional examples to one of my single-file `.vue` components:
->
-> ```
-> <docs>
-> Hello, here's a further usage example:
-> 
->   <UiBoxImage>
-> 	<UiHeading :level=2>Default Example Usage</UiHeading>
->   </UiBoxImage>
-> 
-> </docs>
-> ```
-> 
-> When I run styleguidist (`v1.7.11`) e'erything compiles as expected. But if I try to run the Vue dev server now I get the following error re: that `<docs/>` tag:
+> I've noticed a problem when using Vue Styleguidist's [inline `<docs/>` tag](https://github.com/vue-styleguidist/vue-styleguidist/blob/master/docs/Documenting.md#external-examples-using-doclet-tags) to add usage examples to my docs. When I run Styleguidist (`v1.7.12`) e'erything works as expected. But if I then try to run the Vue build (with `vue@2.5.16` and `@vue/cli-service@3.0.0-rc.3`) I get the following error:
 > 
 > ```
 > ERROR  Failed to compile with 1 errors
@@ -29,19 +16,25 @@ An example repo re: [**@vue-styleguidist**#154](https://github.com/vue-styleguid
 >  |
 > ```
 > 
-> I vaguely understand how Vue's custom blocks work, so on some level I'd guess the issue is external. However, I know when I'd used older versions of `vue-styleguidist` those docs tag worked seamlessly without any extra configuration. Have I made some dumb mistake? Is there a new step that I'm missing?
+> With older versions of `vue-styleguidist` these docs tag worked seamlessly — no extra configuration or unexpected errors! Have I made some silly mistake? Is there a new step I'm missing from some update?
 
-#### Steps to Reproduce
+### Steps to Reproduce
 
 1. First `git clone` the repo; run `yarn` to install dependencies.
 2. To verify your installation, run `yarn dox`. (It should build + serve the style guide. Note how it pulls in the Markdown from our component's inline `<docs/>` tag without error as expected!)
 3. Next, try running `yarn dev`. **_You'll get an error about that inline `<docs/>` tag._** (It will tell you that you're missing the "appropriate loaders" to render the tag properly.)
-4. To fix this, comment out the entire `<docs/>` tag in our component file:
+4. To fix this, comment out the entire `<docs/>` tag in our component file as follows. Then try rerunning the `yarn dev` server.
 
     ```
+    // make sure to use single-line comments since
+    // block-comments will break the Webpack build!
     // <docs>
     //   <!--etc-->
     // </docs>
     ```
 
-    Now try rerunning the `yarn dev` server. With the docs tag commented out, the Vue build process should succeed.
+    With the `<docs/>` tag commented out, the Vue build should succeed.
+
+### Expected Behavior
+
+At a simple level, I'd imagine the Vue build process should work seamlessly even *if* some components include an inline `<docs/>` tag. More specifically, I'd expect Styleguidist to add any/all Webpack loaders or other configurations necessary for Vue to render those `<docs/>` tag. 
