@@ -38,12 +38,10 @@ An example repo re: [**@vue-styleguidist**#154](https://github.com/vue-styleguid
 3. Next, try running `yarn dev`. **_You'll get an error about that inline `<docs/>` tag._** (It will tell you that you're missing the "appropriate loaders" to render the tag properly.)
 4. To fix this, comment out the entire `<docs/>` tag in our component file:
 
-  ```
-  // <docs>
-  //   <!--etc-->
-  // </docs>
-  ```
+    ```
+    // <docs>
+    //   <!--etc-->
+    // </docs>
+    ```
 
-  Now try rerunning the `yarn dev` server. With the docs tag commented out, the Vue build process should succeed.
-
-###
+    Now try rerunning the `yarn dev` server. With the docs tag commented out, the Vue build process should succeed.
