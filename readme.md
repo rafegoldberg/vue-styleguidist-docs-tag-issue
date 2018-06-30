@@ -21,9 +21,9 @@ An example repo re: [**vue-styleguidist** issue #154](https://github.com/vue-sty
 ### Steps to Reproduce
 
 1. First `git clone` the repo; run `yarn` to install dependencies.
-2. To verify your installation, run `yarn dox`. (It should build + serve the style guide. Note how it pulls in the Markdown from our component's inline `<docs/>` tag without error as expected!)
-3. Next, try running `yarn dev`. **_You'll get an error about the inline `<docs/>` tag._** (It will tell you that you're missing the "appropriate loaders" to render the tag properly.)
-4. To fix this, comment out the entire `<docs/>` tag in our component file: (use single-line comments per below; block-comments will break the Webpack build!)
+2. To verify your installation, run `yarn dox` to start Styleguidist. (Our component's `<docs/>` tag works like a charm!)
+3. But now try starting the Vue dev server with `yarn dev`... **_You'll get an error about our pretty 'lil inline `<docs/>` tag._** (It will tell you that you're missing the "appropriate loaders" to render the tag properly.)
+4. To fix this, comment out the entire `<docs/>` tag in the components `.vue` file. (Use single-line comments per below; block-comments will break the Webpack build:)
 
     ```
     // <docs>
@@ -31,8 +31,8 @@ An example repo re: [**vue-styleguidist** issue #154](https://github.com/vue-sty
     // </docs>
     ```
 
-    Now try rerunning the `yarn dev` server — with the `<docs/>` tag commented, the Vue build process succeeds without a hitch!
+    Now try rerunning the `yarn dev` server — with our `<docs/>` tags commented out, the Vue build process succeeds without a hitch!
 
 ### Expected Behavior
 
-At a simple level, I'd imagine the Vue build process should work seamlessly even *if* some components include an inline `<docs/>` tag. More specifically, I'd expect Styleguidist to add any/all Webpack loaders or other configurations necessary for Vue to render those `<docs/>` tag. 
+At a simple level, I'd imagine the Vue build process should work seamlessly even *if* some components include an inline `<docs/>` tag. (More specifically, I'd imagine Styleguidist would have to add any/all Webpack loaders, or whatever config files etc. are necessary for Vue to render those `<docs/>` tags!)
