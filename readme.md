@@ -1,3 +1,44 @@
+---
+<details>
+    <summary align=center><b>QUICK FIX</b></summary>
+
+---
+
+adding this basic-ass loader to my `vue.config.js:configureWebpack` entry seems to solve whatever issues Vue was having with `<docs/>` custom blocks: 
+
+```js
+module: {
+  rules: [
+  { resourceQuery: /blockType=docs/,
+    loader: require.resolve('./.docs.loader.js')
+    },
+  ]
+}
+```
+
+The code for the loader itself is ripped directly out of the [Vue docs](https://vue-loader.vuejs.org/guide/custom-blocks.html):
+
+```js
+/**
+ * @file: .docs.loader.js
+ */
+module.exports = function (source, map) {
+  this.callback(
+    null,
+    `export default function (Component) {
+      Component.options.__docs = ${
+        JSON.stringify(source)
+      }
+    }`,
+    map
+  )
+}
+```
+
+</details>
+
+---
+
 ### Vue Styleguidist `<docs/>` Issue
 
 An example repo re: [**vue-styleguidist** issue #154](https://github.com/vue-styleguidist/vue-styleguidist/issues/154):
