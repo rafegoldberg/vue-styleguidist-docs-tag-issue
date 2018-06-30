@@ -25,10 +25,9 @@ An example repo re: [**vue-styleguidist** issue #154](https://github.com/vue-sty
 3. But now try running `yarn dev` to start the Vue dev server... **_This is where I get an error about our pretty 'lil inline `<docs/>` tag. 😭_** (It'll tell you that you're missing the "appropriate loaders" to render the tag properly.)
 4. To fix this, comment out the entire `<docs/>` tag in the components `.vue` file. (Use single-line comments; block-comments will break the Webpack build:)
 
-    ```
+    ```js
     // <docs>
     //   <!--etc-->
-    // </docs>
     ```
 
 5. Now try rerunning the `yarn dev` server — with our `<docs/>` tags commented out, the Vue build process succeeds without a hitch!
