@@ -23,17 +23,15 @@ An example repo re: [**vue-styleguidist** issue #154](https://github.com/vue-sty
 1. First `git clone` the repo; run `yarn` to install dependencies.
 2. To verify your installation, run `yarn dox`. (It should build + serve the style guide. Note how it pulls in the Markdown from our component's inline `<docs/>` tag without error as expected!)
 3. Next, try running `yarn dev`. **_You'll get an error about that inline `<docs/>` tag._** (It will tell you that you're missing the "appropriate loaders" to render the tag properly.)
-4. To fix this, comment out the entire `<docs/>` tag in our component file as follows. Then try rerunning the `yarn dev` server.
+4. To fix this, comment out the entire `<docs/>` tag in our component file: (use single-line comments per below; block-comments will break the Webpack build!)
 
     ```
-    // make sure to use single-line comments since
-    // block-comments will break the Webpack build!
     // <docs>
     //   <!--etc-->
     // </docs>
     ```
 
-    With the `<docs/>` tag commented out, the Vue build should succeed.
+    Now try rerunning the `yarn dev` server — with the `<docs/>` tag commented, the Vue build process succeeds without a hitch!
 
 ### Expected Behavior
 
